@@ -1,0 +1,949 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Place for Samyak ♡</title>
+
+<style>
+:root {
+    --pink: #ffe4ef;
+    --pink2: #f7bfd6;
+    --blue: #e2f3ff;
+    --blue2: #b8ddf5;
+    --rose: #bd668f;
+    --ink: #594b60;
+    --white: #fffafd;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    color: var(--ink);
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    background: linear-gradient(
+        135deg,
+        #fff0f6,
+        #eaf7ff 55%,
+        #fff1f7
+    );
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: .25;
+    background-image: radial-gradient(#fff 1.5px, transparent 1.5px);
+    background-size: 28px 28px;
+    z-index: -1;
+}
+
+header {
+    text-align: center;
+    padding: 55px 18px 30px;
+    position: relative;
+}
+
+.bow {
+    font-size: 2rem;
+    color: #d98caf;
+}
+
+.eyebrow {
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: .72rem;
+    color: #ad7895;
+}
+
+h1 {
+    font-family: Georgia, serif;
+    font-weight: normal;
+    font-size: clamp(2.5rem, 7vw, 4.6rem);
+    margin: 12px 0;
+    color: #9e6387;
+}
+
+h2 {
+    font-family: Georgia, serif;
+    font-weight: normal;
+    color: #9e6387;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    margin: 0 0 10px;
+}
+
+.subtitle {
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+.cloud {
+    position: absolute;
+    font-size: 2.4rem;
+    opacity: .7;
+}
+
+.c1 {
+    left: 8%;
+    top: 55px;
+}
+
+.c2 {
+    right: 9%;
+    top: 100px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 10px 15px 28px;
+}
+
+nav a,
+.btn {
+    border: 0;
+    text-decoration: none;
+    color: #805b77;
+    background: #fff9;
+    border: 1px solid #fff;
+    padding: 11px 17px;
+    border-radius: 30px;
+    font: inherit;
+    cursor: pointer;
+    box-shadow: 0 5px 18px #d7b8cc33;
+    transition: .2s;
+}
+
+nav a:hover,
+.btn:hover {
+    transform: translateY(-2px);
+    background: #fff;
+}
+
+main {
+    max-width: 950px;
+    margin: auto;
+    padding: 0 18px 55px;
+}
+
+.panel {
+    background: #ffffffb8;
+    border: 1px solid #fff;
+    border-radius: 28px;
+    padding: clamp(22px, 5vw, 38px);
+    margin: 22px 0;
+    box-shadow: 0 15px 45px #b9c9dc30;
+    backdrop-filter: blur(8px);
+}
+
+.center {
+    text-align: center;
+}
+
+.intro {
+    font-size: 1.08rem;
+    line-height: 1.9;
+    max-width: 720px;
+    margin: 0 auto 20px;
+}
+
+.teddy {
+    font-size: 4.3rem;
+    display: block;
+    margin: 10px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 13px;
+    margin-top: 22px;
+}
+
+.mood,
+.memory {
+    background: linear-gradient(145deg, #fff1f7, #eef8ff);
+    border: 1px solid #fff;
+    border-radius: 20px;
+    padding: 18px;
+    text-align: left;
+}
+
+.mood button {
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: 0;
+    color: #805b77;
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.mood small {
+    display: block;
+    margin-top: 7px;
+    color: #987f94;
+}
+
+.message {
+    margin-top: 18px;
+    padding: 22px;
+    border-radius: 20px;
+    background: #fff9fd;
+    line-height: 1.9;
+    white-space: pre-line;
+    min-height: 65px;
+}
+
+.memory {
+    cursor: pointer;
+    min-height: 125px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: Georgia, serif;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    transition: .2s;
+}
+
+.memory:hover {
+    transform: translateY(-3px);
+}
+
+.love-open {
+    background: linear-gradient(120deg, #ffe5f0, #e6f5ff);
+    border: 1px solid white;
+    border-radius: 24px;
+    padding: 26px;
+    text-align: center;
+    margin-top: 22px;
+}
+
+.love-letter {
+    display: none;
+    text-align: left;
+    background: #fffafd;
+    border-radius: 20px;
+    padding: clamp(20px, 4vw, 34px);
+    margin-top: 20px;
+    line-height: 1.95;
+    white-space: pre-line;
+}
+
+.love-letter h3 {
+    font-family: Georgia, serif;
+    color: #a36689;
+    font-weight: normal;
+    font-size: 1.5rem;
+}
+
+.love-letter p {
+    margin: 0 0 18px;
+}
+
+.love-letter .sign {
+    font-family: Georgia, serif;
+    color: #a36689;
+    font-size: 1.3rem;
+    text-align: right;
+}
+
+.hugbox {
+    background: linear-gradient(135deg, #fff0f6, #eaf7ff);
+    border-radius: 24px;
+    padding: 25px;
+    margin-top: 20px;
+}
+
+.hugcount {
+    font-size: 2.4rem;
+    color: #b56e94;
+    font-family: Georgia, serif;
+}
+
+.footer {
+    text-align: center;
+    padding: 25px;
+    color: #9b8297;
+    font-size: .9rem;
+}
+
+.float {
+    position: fixed;
+    bottom: -30px;
+    animation: rise 7s linear infinite;
+    pointer-events: none;
+    opacity: .55;
+    z-index: -1;
+}
+
+@keyframes rise {
+    to {
+        transform: translateY(-110vh) rotate(25deg);
+        opacity: 0;
+    }
+}
+
+@media(max-width: 550px) {
+    header {
+        padding-top: 40px;
+    }
+
+    .c1 {
+        left: 3%;
+    }
+
+    .c2 {
+        right: 3%;
+    }
+
+    nav a {
+        font-size: .85rem;
+        padding: 9px 12px;
+    }
+
+    .panel {
+        border-radius: 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <span class="cloud c1">☁️</span>
+    <span class="cloud c2">☁️</span>
+
+    <div class="bow">୨୧</div>
+
+    <div class="eyebrow">
+        A tiny corner of the internet
+    </div>
+
+    <h1>Hey, Samyak! ♡</h1>
+
+    <p class="subtitle">
+        A special place for the boy who deserves all the happiness 🌷
+        <br>
+        Made with lots of love, just for you — Preet 🎀
+    </p>
+
+    <span class="teddy">🧸</span>
+</header>
+
+<nav>
+    <a href="#moods">For every mood</a>
+    <a href="#remember">Remember this</a>
+    <a href="#love">Open when unloved</a>
+    <a href="#hugs">Virtual hugs</a>
+</nav>
+
+<main>
+
+<!-- WELCOME SECTION -->
+
+<section class="panel center">
+
+    <div class="eyebrow">A little note</div>
+
+    <h2>This place is yours</h2>
+
+    <p class="intro">
+        Whenever your day feels too long, your mind feels too full,
+        or you just need a little reminder that someone cares about you,
+        come here.
+
+        You don't have to be cheerful every second.
+        You can just be yourself here.
+
+        I hope this little website makes you feel appreciated,
+        important and loved.
+    </p>
+
+    <div style="font-size:1.5rem">
+        🎀 ☁️ 🩵 🌷 🩷
+    </div>
+
+</section>
+
+
+<!-- MESSAGE FOR EVERY MOOD -->
+
+<section class="panel" id="moods">
+
+    <div class="center">
+
+        <div class="eyebrow">
+            Pick what you need right now
+        </div>
+
+        <h2>A message for every mood</h2>
+
+        <p>
+            Whatever kind of day you're having,
+            there's a little note for it.
+        </p>
+
+    </div>
+
+    <div class="grid">
+
+        <div class="mood">
+            <button data-note="unloved">
+                💗 When you feel unloved
+            </button>
+            <small>
+                A reminder of how much you matter.
+            </small>
+        </div>
+
+        <div class="mood">
+            <button data-note="tired">
+                ☁️ When you're tired
+            </button>
+            <small>
+                You are allowed to rest.
+            </small>
+        </div>
+
+        <div class="mood">
+            <button data-note="miss">
+                🧸 When you miss me
+            </button>
+            <small>
+                A tiny reminder that you're special.
+            </small>
+        </div>
+
+        <div class="mood">
+            <button data-note="overthink">
+                🫧 When you're overthinking
+            </button>
+            <small>
+                Let's not let assumptions speak for us.
+            </small>
+        </div>
+
+        <div class="mood">
+            <button data-note="proud">
+                🌟 When you doubt yourself
+            </button>
+            <small>
+                Look how far you've come.
+            </small>
+        </div>
+
+        <div class="mood">
+            <button data-note="smile">
+                🎀 When you need a smile
+            </button>
+            <small>
+                Emergency dose of cuteness.
+            </small>
+        </div>
+
+    </div>
+
+    <div class="message" id="moodMessage">
+        Choose a mood above, mela baby.
+        A little note will appear here. ♡
+    </div>
+
+</section>
+
+
+<!-- THINGS TO REMEMBER -->
+
+<section class="panel" id="remember">
+
+    <div class="center">
+
+        <div class="eyebrow">
+            Little truths to keep close
+        </div>
+
+        <h2>Things I hope you never forget</h2>
+
+        <p>
+            Tap any card for a reminder.
+        </p>
+
+    </div>
+
+    <div class="grid">
+
+        <div class="memory"
+             data-front="You matter. ♡"
+             data-back="Not because of what you do for anyone. You matter simply because you're you.">
+            You matter. ♡
+        </div>
+
+        <div class="memory"
+             data-front="Your feelings matter."
+             data-back="You never have to hide your feelings to seem strong. You deserve to be heard with patience.">
+            Your feelings matter.
+        </div>
+
+        <div class="memory"
+             data-front="I'm proud of you."
+             data-back="Even for the efforts nobody sees, the things you keep trying at, and the progress you sometimes overlook.">
+            I'm proud of you.
+        </div>
+
+        <div class="memory"
+             data-front="You don't need to be perfect."
+             data-back="You can make mistakes, learn, grow and have difficult days. None of that makes you less worthy.">
+            You don't need to be perfect.
+        </div>
+
+        <div class="memory"
+             data-front="You deserve good things."
+             data-back="Peace, kindness, laughter, success, support and people who genuinely listen to you.">
+            You deserve good things.
+        </div>
+
+        <div class="memory"
+             data-front="You are appreciated."
+             data-back="Your little efforts, your presence, your humour and the person you are do not go unnoticed.">
+            You are appreciated.
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PERSONAL LOVE LETTER -->
+
+<section class="panel" id="love">
+
+    <div class="center">
+
+        <div class="eyebrow">
+            Save this for the days you need it
+        </div>
+
+        <h2>Open when you feel unloved ♡</h2>
+
+        <p class="intro">
+            For the days when you need more than a quick
+            "it's okay". Take your time and read every word.
+        </p>
+
+        <div class="love-open">
+
+            <div style="font-size:2.5rem">
+                💌 🧸
+            </div>
+
+            <p>
+                <strong>
+                    A letter from Preet, just for you.
+                </strong>
+            </p>
+
+            <button class="btn" id="openLetter">
+                Open your little love letter ♡
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <article class="love-letter" id="loveLetter">
+
+        <h3>
+            My Samyak, please read this slowly. 🩷
+        </h3>
+
+        <p>
+            If you're opening this because you feel unloved,
+            unimportant, or maybe just a little low, I wish I could
+            sit beside you and remind you of everything I sometimes
+            fail to say properly.
+        </p>
+
+        <p>
+            You are so, so important to me. Not only when you're
+            smiling, joking, being cute or having a good day.
+            You matter on your quiet days too.
+
+            You matter when you're tired, confused, irritated,
+            emotional, or when you don't even know how to explain
+            what you're feeling.
+        </p>
+
+        <p>
+            You do not have to earn my care by being perfect.
+            You don't have to always be strong, funny, available
+            or okay.
+
+            You're a human being, and you are allowed to have
+            feelings. I want you to feel safe enough to be honest
+            about them.
+        </p>
+
+
+        <h3>
+            Before you think anything negative about me…
+        </h3>
+
+        <p>
+            Please, before you assume that I don't care,
+            that you're not important to me, or that something
+            has changed, talk to me first.
+
+            Mere baare mein kuch negative sochne se pehle,
+            please give me a chance to explain.
+
+            Ask me what's wrong. Tell me what made you feel that way.
+            I would rather have an honest conversation than let
+            a misunderstanding grow between us.
+        </p>
+
+        <p>
+            Sometimes I may be busy, distracted, tired, or not very
+            good at expressing what's in my head.
+
+            Sometimes my words may come out wrong.
+
+            That doesn't mean your feelings are silly, and it
+            doesn't mean we should ignore what hurt.
+
+            We can talk about it, listen to each other and
+            understand each other.
+
+            I don't expect either of us to read minds.
+        </p>
+
+        <p>
+            Please don't decide what I feel without letting me speak.
+            And I promise to try to listen to you too, instead of
+            making you feel that you have to explain your heart
+            a hundred times.
+        </p>
+
+
+        <h3>
+            If you ever feel you're not enough…
+        </h3>
+
+        <p>
+            You are not in a competition with anybody.
+            You don't have to compare yourself to anyone or prove
+            that you deserve love.
+
+            I appreciate the person you are: your silly side,
+            your little habits, your random talks, your dreams,
+            your efforts and all the tiny things that make you Samyak.
+        </p>
+
+        <p>
+            I hope you see your own worth, even on days when
+            confidence feels far away.
+
+            I hope you are kinder to yourself.
+
+            I'm proud of you for continuing to learn, grow and try,
+            even when things don't go exactly as planned.
+        </p>
+
+
+        <h3>
+            When life feels too heavy…
+        </h3>
+
+        <p>
+            Take one thing at a time, okay?
+
+            You don't have to solve your whole life in one night.
+
+            Rest when you need to. Eat something, drink some water,
+            get some fresh air, and give yourself a little patience.
+
+            You deserve support, not pressure.
+
+            If things feel bigger than you can manage alone,
+            please reach out to someone you trust.
+
+            You don't have to carry everything silently.
+        </p>
+
+
+        <h3>
+            When you miss me…
+        </h3>
+
+        <p>
+            Think of my random messages, my silly questions,
+            the way I want to know how your day went, and all
+            the little moments that are ours.
+
+            I hope we keep making memories, laughing at nonsense
+            and finding new reasons to make each other smile.
+        </p>
+
+
+        <h3>
+            What I want you to know most
+        </h3>
+
+        <p>
+            I can't promise that we'll never have misunderstandings
+            or difficult days. No relationship is perfect.
+
+            But I do want us to keep choosing honesty, kindness,
+            patience and effort.
+
+            Your feelings deserve respect, and so do mine.
+
+            We should be able to talk without fear, listen without
+            dismissing each other, and make space for both of us
+            to grow.
+        </p>
+
+        <p>
+            I want good things for you, Samyak.
+
+            I want you to feel proud of yourself, chase the things
+            that make you happy, reach your goals and have a life
+            filled with peace, laughter and people who value you.
+
+            Please don't forget that you are more than one bad day,
+            one mistake or one difficult moment.
+        </p>
+
+        <p>
+            And if you ever forget all of this, come back and
+            read this again.
+
+            This little place will be here to remind you:
+
+            You matter, you are appreciated, and you deserve
+            to feel loved.
+        </p>
+
+        <p class="sign">
+            Lots and lots of love,<br>
+            Preet ♡ 🎀
+        </p>
+
+    </article>
+
+</section>
+
+
+<!-- VIRTUAL HUGS -->
+
+<section class="panel center" id="hugs">
+
+    <div class="eyebrow">
+        A little dose of affection
+    </div>
+
+    <h2>A thousand virtual hugs</h2>
+
+    <div class="hugbox">
+
+        <div class="teddy">🧸</div>
+
+        <p id="hugLine">
+            Sending you the biggest, coziest virtual hug!
+        </p>
+
+        <div class="hugcount" id="hugCount">
+            0
+        </div>
+
+        <small>
+            virtual hugs collected
+        </small>
+
+        <p>
+            <button class="btn" id="hugButton">
+                Send me a hug ♡
+            </button>
+        </p>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<footer class="footer">
+
+    Made with a whole lot of love by Preet ♡
+    <br>
+    For Samyak, always cheering you on. 🎀
+
+</footer>
+
+
+<script>
+
+// MESSAGES FOR EVERY MOOD
+
+const notes = {
+
+    unloved:
+    "Hey, you. You are not difficult to love, and you are not forgettable. You matter on the good days and the messy days. You don't need to prove your worth. Please be gentle with yourself today. ♡",
+
+    tired:
+    "Pause for a minute, okay? You have permission to rest. You don't have to be productive every second or have everything figured out. One small step at a time. I'm proud of your efforts. ☁️",
+
+    miss:
+    "I hope you know that you have a special place in my thoughts. Imagine me asking if you've eaten, sending you a random update and finding one more silly reason to talk to you. Sending you a little teddy-bear hug from afar. 🧸",
+
+    overthink:
+    "Before believing every worry, let's check what's actually true. Please ask me instead of assuming the worst. We can talk honestly, clear things up and listen to each other. You don't have to figure out what I mean all by yourself. 🫧",
+
+    proud:
+    "Look at you, still trying and growing. Your progress counts even when it's slow. You don't have to compare your journey with anyone else's. Keep going at your pace. I believe you can build a life you're proud of. 🌟",
+
+    smile:
+    "BREAKING NEWS: One very cute boy has been officially reminded that he is appreciated. 🐥🎀 Please collect one smile, one deep breath and one imaginary teddy bear hug. This is a very serious instruction."
+
+};
+
+
+// SHOW MOOD MESSAGE
+
+document.querySelectorAll("[data-note]").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        document.getElementById("moodMessage").textContent =
+            notes[button.dataset.note];
+
+    });
+
+});
+
+
+// FLIP AFFIRMATION CARDS
+
+document.querySelectorAll(".memory").forEach(card => {
+
+    card.addEventListener("click", () => {
+
+        let front = card.dataset.front;
+
+        card.dataset.front = card.dataset.back;
+
+        card.dataset.back = front;
+
+        card.textContent = card.dataset.front;
+
+    });
+
+});
+
+
+// OPEN AND CLOSE LOVE LETTER
+
+document.getElementById("openLetter").addEventListener("click", () => {
+
+    const letter = document.getElementById("loveLetter");
+
+    letter.style.display =
+        letter.style.display === "block" ? "none" : "block";
+
+    document.getElementById("openLetter").textContent =
+        letter.style.display === "block"
+        ? "Close the letter ♡"
+        : "Open your little love letter ♡";
+
+    if (letter.style.display === "block") {
+
+        letter.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    }
+
+});
+
+
+// VIRTUAL HUG COUNTER
+
+let hugs = 0;
+
+const hugLines = [
+
+    "A big teddy-bear hug, just for you. 🧸",
+
+    "You are appreciated more than you know. ♡",
+
+    "One hug for today, one for tomorrow, and extra ones just because. 🎀",
+
+    "Keep going gently. You're doing your best. ☁️",
+
+    "A reminder: you deserve kindness, especially from yourself. 🩵"
+
+];
+
+document.getElementById("hugButton").addEventListener("click", () => {
+
+    hugs++;
+
+    document.getElementById("hugCount").textContent = hugs;
+
+    document.getElementById("hugLine").textContent =
+        hugLines[(hugs - 1) % hugLines.length];
+
+});
+
+
+// FLOATING HEARTS, CLOUDS AND BOWS
+
+setInterval(() => {
+
+    const element = document.createElement("div");
+
+    element.className = "float";
+
+    element.textContent = ["♡", "☁️", "🎀", "✧"][
+        Math.floor(Math.random() * 4)
+    ];
+
+    element.style.left = Math.random() * 100 + "vw";
+
+    element.style.fontSize =
+        (16 + Math.random() * 18) + "px";
+
+    document.body.appendChild(element);
+
+    setTimeout(() => {
+
+        element.remove();
+
+    }, 7000);
+
+}, 1100);
+
+</script>
+
+</body>
+</html>
